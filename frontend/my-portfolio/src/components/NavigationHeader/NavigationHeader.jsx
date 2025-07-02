@@ -9,6 +9,7 @@ import {
   Drawer,
   List,
   ListItem,
+  ListItemButton,
   ListItemText,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -35,14 +36,13 @@ const NavigationHeader = () => {
       <List>
         {navItems.map(({ label, path }) => (
           <ListItem key={label} disablePadding>
-            <ListItem
-              button
+            <ListItemButton
               component={Link}
               to={path}
               sx={{ textAlign: "center" }}
             >
               <ListItemText primary={label} />
-            </ListItem>
+            </ListItemButton>
           </ListItem>
         ))}
       </List>
