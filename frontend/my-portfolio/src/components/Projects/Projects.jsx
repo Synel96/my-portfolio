@@ -16,7 +16,7 @@ import "swiper/css/pagination";
 
 import { fetchProjects } from "../../services/projectService";
 
-const brandColor = "#673ab7";
+const brandGreen = "#4caf50";
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
@@ -119,9 +119,9 @@ const Projects = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         sx={{
-                          backgroundColor: brandColor,
+                          backgroundColor: brandGreen,
                           "&:hover": {
-                            backgroundColor: "#532e8a",
+                            backgroundColor: "#388e3c",
                           },
                           textTransform: "none",
                           fontWeight: "bold",
