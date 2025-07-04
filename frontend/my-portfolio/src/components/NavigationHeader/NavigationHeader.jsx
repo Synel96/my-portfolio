@@ -30,8 +30,25 @@ const NavigationHeader = () => {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
-        My Portfolio
+      <Typography
+        variant="h5"
+        component={Link}
+        to="/"
+        sx={{
+          my: 2,
+          textDecoration: "none",
+          fontFamily: "'Great Vibes', cursive",
+          fontSize: "2rem",
+          color: "#00e676",
+          letterSpacing: 1.5,
+          transition: "all 0.3s ease",
+          "&:hover": {
+            color: "#ffffff",
+            transform: "scale(1.05)",
+          },
+        }}
+      >
+        Synel
       </Typography>
       <List>
         {navItems.map(({ label, path }) => (
@@ -69,12 +86,18 @@ const NavigationHeader = () => {
             sx={{
               flexGrow: 1,
               textDecoration: "none",
-              color: "inherit",
-              fontWeight: "bold",
-              fontFamily: "Roboto, sans-serif",
+              fontFamily: "'Great Vibes', cursive",
+              fontSize: "2rem",
+              color: "#00e676",
+              letterSpacing: 1.5,
+              transition: "all 0.3s ease",
+              "&:hover": {
+                color: "#ffffff",
+                transform: "scale(1.05)",
+              },
             }}
           >
-            My Portfolio
+            Synel
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map(({ label, path }) => (

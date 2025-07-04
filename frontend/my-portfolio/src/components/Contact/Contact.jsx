@@ -69,7 +69,7 @@ const Contact = () => {
               maxWidth: 350,
             }}
           >
-            syneldev@gmail.com
+            synel.web@gmail.com
           </Button>
 
           <Button
