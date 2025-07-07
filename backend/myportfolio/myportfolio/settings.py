@@ -3,20 +3,22 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Secret key from environment
 SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
 if not SECRET_KEY:
     raise ValueError("DJANGO_SECRET_KEY environment variable is not set!")
 
-
+# Debug off for production
 DEBUG = False
 
+# Allowed hosts (Fly.io default: <appname>.fly.dev)
 ALLOWED_HOSTS = [
+    os.environ.get("FLY_APP_NAME", "") + ".fly.dev",
     "127.0.0.1",
     "localhost",
-    ".railway.app",
 ]
 
-
+# Installed apps
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -29,6 +31,7 @@ INSTALLED_APPS = [
     "portfolio",
 ]
 
+# Middleware
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
@@ -59,7 +62,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "myportfolio.wsgi.application"
 
-
+# SQLite database
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
@@ -67,6 +70,7 @@ DATABASES = {
     }
 }
 
+# Password validation
 AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
     {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
@@ -79,17 +83,18 @@ TIME_ZONE = "UTC"
 USE_I18N = True
 USE_TZ = True
 
-
-STATIC_URL = "static/"
+# Static files config (Fly expects collectstatic output)
+STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
+# Production static file storage
+STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
+
+# Default auto field
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-
+# CORS config
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "https://synel96.github.io",
 ]
-
-
-STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
