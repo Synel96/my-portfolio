@@ -11,11 +11,17 @@ if not SECRET_KEY:
 # Debug off for production
 DEBUG = False
 
-# Allowed hosts (Fly.io default: <appname>.fly.dev)
+# Allowed hosts (include Fly domain)
+FLY_APP = os.environ.get("FLY_APP_NAME", "")
 ALLOWED_HOSTS = [
-    os.environ.get("FLY_APP_NAME", "") + ".fly.dev",
+    f"{FLY_APP}.fly.dev" if FLY_APP else "",
     "127.0.0.1",
     "localhost",
+]
+
+# CSRF trusted origins (include Fly domain HTTPS)
+CSRF_TRUSTED_ORIGINS = [
+    f"https://{FLY_APP}.fly.dev" if FLY_APP else "",
 ]
 
 # Installed apps
@@ -35,6 +41,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -85,10 +92,10 @@ USE_TZ = True
 
 # Static files config (Fly expects collectstatic output)
 STATIC_URL = "/static/"
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
-# Production static file storage
-STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
+# Whitenoise static file storage
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Default auto field
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
