@@ -20,7 +20,7 @@ const navItems = [
   { label: "About", path: "/about" },
   { label: "Projects", path: "/projects" },
   { label: "Contact", path: "/contact" },
-  { label: "Resume", path: "/resume" },
+  { label: "Certifications", path: "/resume" },
 ];
 
 const NavigationHeader = () => {

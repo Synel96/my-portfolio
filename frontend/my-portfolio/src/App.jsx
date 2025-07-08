@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/Home/Home";
 import About from "./components/About/About";
 import Projects from "./components/Projects/Projects";
@@ -8,16 +8,16 @@ import NavigationHeader from "./components/NavigationHeader/NavigationHeader";
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <NavigationHeader />
       <Routes>
-        <Route path="/" element={<Home />}></Route>
+        <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/resume" element={<Resume />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
