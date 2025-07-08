@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const API_BASE_URL = "http://127.0.0.1:8000/portfolio/api/projects/";
+const API_BASE_URL =
+  "https://myportfolio-falling-mountain-4284.fly.dev/portfolio/api/projects/";
 
 export const fetchProjects = async () => {
   try {

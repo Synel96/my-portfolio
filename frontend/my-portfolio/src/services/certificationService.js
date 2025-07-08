@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8000/portfolio/api/certifications/";
+const API_URL =
+  "https://myportfolio-falling-mountain-4284.fly.dev/portfolio/api/certifications/";
 
 export const getCertifications = async () => {
   try {
