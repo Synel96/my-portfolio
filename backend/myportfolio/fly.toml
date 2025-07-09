@@ -18,3 +18,8 @@ primary_region = 'otp'
   memory = '1gb'
   cpu_kind = 'shared'
   cpus = 1
+
+
+[deploy]
+
+  release_command = "python manage.py migrate --noinput"

@@ -25,6 +25,8 @@ RUN apt-get update && \
 # Copy requirements first to leverage Docker cache
 COPY requirements.txt /app/
 
+COPY db.sqlite3 /app/db.sqlite3
+
 # Upgrade pip separately for clearer logs
 RUN pip install --upgrade pip
 
